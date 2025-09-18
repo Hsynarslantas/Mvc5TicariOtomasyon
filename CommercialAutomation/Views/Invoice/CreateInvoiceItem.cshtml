@@ -1,0 +1,23 @@
+﻿@model CommercialAutomation.Models.Classes.InvoiceItem
+@{
+    ViewBag.Title = "CreateInvoiceItem";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<h2>Yeni Fatura Kalemi Ekleme Sayfası</h2>
+<br />
+<br />
+<form method="post" class="form-group" style="margin-left: 30px">
+    @Html.Label("Description", "Açıklama")
+    @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
+    <br />
+    @Html.Label("UnitPrice", "Birim Fiyat")
+    @Html.TextBoxFor(x => x.UnitPrice, new { @class = "form-control" })
+    <br />
+    @Html.Label("TotalPrice", "Toplam Fiyat")
+    @Html.TextBoxFor(x => x.TotalPrice, new { @class = "form-control" })
+    <br />
+    @Html.Label("InvoiceId", "Fatura Id")
+    @Html.TextBoxFor(x => x.InvoiceId, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-info" style="margin-left:20px;">Ekle</button>
+</form>

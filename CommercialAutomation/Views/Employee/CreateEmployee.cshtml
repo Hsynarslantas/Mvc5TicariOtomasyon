@@ -1,0 +1,28 @@
+﻿@model CommercialAutomation.Models.Classes.Employee
+@{
+    ViewBag.Title = "CreateEmployee";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<h2>Yeni Çalışan Ekleme Sayfası</h2>
+<br />
+<br />
+@using (Html.BeginForm("CreateEmployee", "Employee", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{  
+<form method="post" class="form-group"style="margin-left: 30px">
+    @Html.Label("DepartmentName", "Çalışan Adı")
+    @Html.TextBoxFor(x => x.EmployeeName, new { @class = "form-control" })
+    <br />
+    @Html.Label("DepartmentName", "Çalışan Soyadı")
+    @Html.TextBoxFor(x => x.EmployeeSurname, new { @class = "form-control" })
+    <br />
+    @Html.Label("DepartmentName", "Çalışan Görseli")
+    @*@Html.TextBoxFor(x => x.EmployeeImageUrl, new { @class = "form-control" })*@
+    <input type="file"name="EmployeeImageUrl" />
+    <br />
+    @Html.Label("Department", "Departman Adı")
+    @Html.DropDownListFor(x => x.Department,(List<SelectListItem>)ViewBag.dp, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-info"style="margin-left:20px;">Ekle</button>
+</form>
+}
+

@@ -1,0 +1,36 @@
+﻿@using CommercialAutomation.Models.Classes
+@model List<Message>
+    @foreach(var item in Model)
+    {
+
+
+<div class="timeline timeline-inverse">
+
+
+    <div class="time-label">
+
+        <span class="bg-info">
+
+          @item.Date.ToShortDateString()
+
+        </span>
+
+    </div>
+
+    <div>
+
+        <i class="fas fa-envelope bg-primary"></i>
+
+        <div class="timeline-item">
+
+            <h3 class="timeline-header"><a href="#">@item.Title</a></h3>
+
+            <div class="timeline-body">
+
+               @item.Subject
+
+            </div>
+        </div>
+    </div>
+</div>
+    }

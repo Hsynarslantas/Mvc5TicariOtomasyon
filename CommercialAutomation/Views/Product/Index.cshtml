@@ -1,0 +1,44 @@
+﻿@using CommercialAutomation.Models.Classes
+@model List<Product>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+@using (Html.BeginForm("Index", "Product", FormMethod.Get))
+{
+    <p>
+        Ürün Adı:@Html.TextBox("p")
+        <input type="submit" value="Ara" />
+    </p>
+}
+<table class="table table-bordered" style="margin-top:20px">
+    <tr>
+        <th>Ürün Adı</th>
+        <th>Ürün Stoğu</th>
+        <th>Ürün Markası</th>
+        <th>Ürün Alış Fiyatı</th>
+        <th>Ürün Satış Fiyatı</th>
+        <th>Ürün Durumu</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+        <th>Satış Yap</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ProductName</td>
+            <td>@item.ProductStock</td>
+            <td>@item.ProductBrand</td>
+            <td>@item.ProductPurchasePrice</td>
+            <td>@item.ProductSalePrice</td>
+            <td>@item.Status</td>
+            <td><a href="/Product/DeleteProduct/" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Product/UpdateProduct/" class="btn btn-success">Güncelle</a></td>
+            <td><a href="/Product/ProductSale/@item.ProductId" class="btn btn-default"style="background-color:turquoise">Satış Yap</a></td>
+        </tr>
+        }
+</table>
+<a href="/Product/CreateProduct/" class="btn btn-primary" style="width: 120px;">Yeni Ürün Ekle</a>
+
+

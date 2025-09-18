@@ -1,0 +1,24 @@
+﻿@model CommercialAutomation.Models.Classes.CargoDetail
+@{
+    ViewBag.Title = "CreateCargo";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<h2>Yeni Kargo Ekleme Sayfası</h2>
+<br />
+<form method="post" class="form-group" style="margin-left:20px;">
+    @Html.Label("Description", "Satın Alınan İçerik")
+   <input type="text" value="@ViewBag.cargocode" class="form-control" readonly />
+    <br /><br />
+    @Html.Label("CargoCode", "Kargo Kodu")
+    @Html.TextBoxFor(x => x.CargoCode, new { @class = "form-control" })
+    <br /><br />
+    @Html.Label("Personel", "Satan Personel")
+    @Html.TextBoxFor(x => x.Personel, new { @class = "form-control" })
+    <br /><br />
+    @Html.Label("Buyer", "Satılan Alan Kişi")
+    @Html.TextBoxFor(x => x.Buyer, new { @class = "form-control" })
+    <br /><br />
+    <button class="btn btn-default" style="margin-left:20px;background-color:orange">Ekle</button>
+</form> 
+
+

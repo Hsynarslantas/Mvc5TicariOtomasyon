@@ -1,0 +1,85 @@
+﻿@using CommercialAutomation.Models.Classes
+@model List<Product>
+@{ ViewBag.Title = "Index"; Layout = "~/Views/Shared/AdminLayout.cshtml"; }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Ürün Galerisi</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/thumber/fonts/icomoon/style.css" />
+    <link rel="stylesheet" href="~/thumber/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/thumber/css/magnific-popup.css" />
+    <link rel="stylesheet" href="~/thumber/css/jquery-ui.css" />
+    <link rel="stylesheet" href="~/thumber/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="~/thumber/css/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="~/thumber/css/bootstrap-datepicker.css" />
+    <link rel="stylesheet" href="~/thumber/fonts/flaticon/font/flaticon.css" />
+    <link rel="stylesheet" href="~/thumber/css/aos.css" />
+    <link rel="stylesheet" href="~/thumber/css/jquery.scrollbar.css" />
+    <link rel="stylesheet" href="~/thumber/css/fancybox.min.css" />
+    <link rel="stylesheet" href="~/thumber/css/swiper.min.css" />
+    <link rel="stylesheet" href="~/thumber/css/style.css" />
+</head>
+<body>
+
+    <div class="site-wrap">
+        <div class="swiper-container gallery-top">
+            <div class="swiper-wrapper">
+                @foreach (var item in Model)
+                {
+                    <div class="swiper-slide cover" style="background-image: url('@item.ImageUrl');">
+                        <a href="@item.ImageUrl" data-fancybox="gallery" class="zoom">
+                            <span class="icon-search"></span>
+                        </a>
+                        <div class="img-info">
+                            <span class="btn-toggle-expand">
+                                <span class="icon-call_made"></span>
+                            </span>
+                            <div class="img-info-content">
+                                <h2>@item.ProductName</h2>
+                                <div class="scrollbar-inner style-scrollbar-sm js-scrollbar-container">
+                                    <p class="mb-0">
+                                        Marka: @item.ProductBrand <br />
+                                        Fiyat: ₺@item.ProductSalePrice <br />
+                                        Stok: @item.ProductStock
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="swiper-button-next swiper-button-white"></div>
+            <div class="swiper-button-prev swiper-button-white"></div>
+        </div>
+
+        <div class="swiper-container gallery-thumbs">
+            <div class="swiper-wrapper">
+                @foreach (var item in Model)
+                {
+                    <div class="swiper-slide cover" style="background-image:url('@item.ImageUrl')"></div>
+                }
+            </div>
+        </div>
+    </div> <!-- .site-wrap -->
+
+    <script src="~/thumber/js/jquery-3.3.1.min.js"></script>
+    <script src="~/thumber/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="~/thumber/js/jquery-ui.js"></script>
+    <script src="~/thumber/js/popper.min.js"></script>
+    <script src="~/thumber/js/bootstrap.min.js"></script>
+    <script src="~/thumber/js/owl.carousel.min.js"></script>
+    <script src="~/thumber/js/jquery.countdown.min.js"></script>
+    <script src="~/thumber/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/thumber/js/bootstrap-datepicker.min.js"></script>
+    <script src="~/thumber/js/aos.js"></script>
+    <script src="~/thumber/js/jquery.fancybox.min.js"></script>
+    <script src="~/thumber/js/swiper.min.js"></script>
+    <script src="~/thumber/js/jquery.scrollbar.js"></script>
+    <script src="~/thumber/js/main.js"></script>
+</body>
+</html>

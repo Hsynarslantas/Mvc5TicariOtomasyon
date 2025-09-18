@@ -1,0 +1,31 @@
+﻿@model CommercialAutomation.Models.Classes.Invoice
+@{
+    ViewBag.Title = "GetInvoice";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<h2>Yeni Fatura Ekleme Sayfası</h2>
+<br />
+<br />
+<form method="post" class="form-group" style="margin-left: 30px">
+    @Html.HiddenFor(x=>x.InvoiceId)
+    @Html.Label("InvoiceSerialNumber", "Seri Numarası")
+    @Html.TextBoxFor(x => x.InvoiceSerialNumber, new { @class = "form-control" })
+    <br />
+    @Html.Label("InvoiceOrderNumber", "Sipariş Numarası")
+    @Html.TextBoxFor(x => x.InvoiceOrderNumber, new { @class = "form-control" })
+    <br />
+    @Html.Label("TaxOffice", "Vergi Dairesi")
+    @Html.TextBoxFor(x => x.TaxOffice, new { @class = "form-control" })
+    <br />
+    @Html.Label("Delivered", "Teslim Eden")
+    @Html.TextBoxFor(x => x.Delivered, new { @class = "form-control" })
+    <br />
+    @Html.Label("Received", "Teslim Alan")
+    @Html.TextBoxFor(x => x.Received, new { @class = "form-control" })
+    <br />
+    @Html.Label("Total", "Total")
+    @Html.TextBoxFor(x => x.Total, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-info" style="margin-left:20px;">Ekle</button>
+</form>
+

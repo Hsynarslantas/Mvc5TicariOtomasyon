@@ -1,0 +1,47 @@
+﻿@model  CommercialAutomation.Models.Classes.SalesTransaction
+@{
+    ViewBag.Title = "ProductSale";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<h2>Yeni Satış Yapma Sayfası</h2>
+<br />
+<form method="post" class="form-group" style="margin-left:30px">
+    @Html.Label("ProductId", "Ürün Id")
+    <input type="text" name="ProductId"value="@ViewBag.v1"class="form-control"readonly />
+    <br /><br />
+    @Html.Label("Employee", "Çalışan ")
+    @Html.DropDownListFor(x => x.Employee, (List<SelectListItem>)ViewBag.e, new { @class = "form-control" })
+    <br /><br />
+    @Html.Label("CurrentId", "Cari Id")
+    @Html.TextBoxFor(x => x.CurrentId, new { @class = "form-control" })
+    <br /><br />
+    @Html.Label("Count", "Adet")
+   <input type="number"class="form-control"maxlength="10"min="1"placeholder="Adet Giriniz"id="txt1" onchange="sum()"/>
+    <br /><br />
+    @Html.Label("Price", "Fiyat")
+    <input type="text" name="Price" value="@ViewBag.v2" class="form-control" id="txt2"onkeyup="sum()"/>
+    <br /><br />
+    @Html.Label("TotalPrice", "Toplam Fiyat ")
+    <input type="text" name="TotalPrice" value="0" class="form-control" id="txt3" readonly />
+    <br /><br />
+    @Html.Label("Date", "Tarih")
+    @Html.TextBoxFor(x => x.Date, new { @class = "form-control" })
+    <br /><br />
+    <button class="btn btn-info"> Satış Yap</button>
+</form>
+<script>
+    function sum() {
+        var number1 = document.getElementById('txt1').value;
+        var number2 = document.getElementById('txt2').value;
+        var result = parseInt(number1) * parseInt(number2);
+        if (!isNaN(result)) {
+
+            document.getElementById('txt3').value = result;
+        }
+    }
+</script>
+
+
+

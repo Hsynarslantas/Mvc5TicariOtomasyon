@@ -1,0 +1,39 @@
+﻿@using CommercialAutomation.Models.Classes
+@model List<SalesTransaction>
+@{
+    ViewBag.Title = "CustomerSales";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<h2>Cari Personel Satışları</h2>
+<br />
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active"> Personel Adı:@ViewBag.employee</li>
+</ol>
+<br />
+<table class="table table-hover">
+    <tr>
+        <th>Satış Id</th>
+        <th>Ürün</th>
+        <th>Personel</th>
+        <th>Fiyat</th>
+        <th>Adet</th>
+        <th>Toplam</th>
+        <th>Tarih</th>
+        <th>Yazdır</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.SalesTransactionId</td>
+            <td>@item.Product.ProductName</td>
+            <td>@item.Employee.EmployeeName @item.Employee.EmployeeSurname </td>
+            <td>@item.Price</td>
+            <td>@item.Count</td>
+            <td>@item.TotalPrice</td>
+            <td>@item.Date.ToShortDateString()</td>
+            <td><a href="#" class="btn btn-success">Yazdır</a></td>
+        </tr>
+    }
+
+</table>
+

@@ -1,0 +1,18 @@
+﻿@model CommercialAutomation.Models.Classes.Category
+@{
+    ViewBag.Title = "GetCategory";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<h2>Kategori Güncelleme Sayfası</h2>
+<br />
+@using (Html.BeginForm("UpdateCategory", "Category", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(x=>x.CategoryName)
+        @Html.TextBoxFor(x => x.CategoryName,new{ @class="form-control"})
+        @Html.HiddenFor(x=>x.CategoryId)
+    </div>
+
+}
+

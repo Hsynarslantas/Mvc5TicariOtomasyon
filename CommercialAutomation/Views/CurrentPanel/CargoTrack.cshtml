@@ -1,0 +1,43 @@
+﻿@using CommercialAutomation.Models.Classes
+@model List<CargoDetail>
+@{
+    ViewBag.Title = "CargoTrack";
+    Layout = "~/Views/Shared/_CurrentLayout.cshtml";
+}
+
+h2>Kargo Detay Sayfası</h2>
+<br />
+<br />
+@using (Html.BeginForm("CargoTrack", "CurrentPanel", FormMethod.Get))
+{
+    <p>
+        Ürün Adı:@Html.TextBox("c")
+        <input type="submit" value="Ara" />
+    </p>
+}
+<br />
+<table class="table table-bordered" style="margin-top:20px;margin-left:20px;">
+    <tr>
+        <th>Alınan Ürün</th>
+        <th>Personel</th>
+        <th>Alıcı</th>
+        <th>Tarih</th>
+        <th>Detaylar</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Description</td>
+            <td>@item.Personel</td>
+            <td>@item.Buyer</td>
+            <td>@item.Date.ToShortDateString()</td>
+            <td><a href="/CurrentPanel/CurrentCargoDetail/@item.CargoDetailId" class="btn btn-default" style="background-color:coral">Detaylar</a></td>
+        </tr>
+    }
+</table>
+
+
+
+
+

@@ -1,0 +1,28 @@
+﻿@using CommercialAutomation.Models.Classes
+@model List<Employee>
+@{
+    ViewBag.Title = "DepartmentDetail";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<h2>Departman Detay Sayfası</h2>
+<br />
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active"> Departman Adı:@ViewBag.d</li>
+</ol>
+<br />
+<table class="table table-hover">
+    <tr>
+        <th>Ad</th>
+        <th>Soyad</th>
+        <th>Sattığı Ürünler</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.EmployeeName</td>
+            <td>@item.EmployeeSurname</td>
+            <td><a href="/Department/DepartmentPersonelSatıs/@item.EmployeeId" class="btn btn-warning">Detaylar</a></td>
+        </tr>
+    }
+
+</table>

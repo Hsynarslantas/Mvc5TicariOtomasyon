@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="~/Scripts/jquery-3.7.0.js"></script>
+<br /><br />
+<button class="btn btn-default" id="Btn1" style="margin-top: 20px; margin-left: 20px; width: 120px; background-color: yellow">Buton 1</button>
+<br /><br />
+<button class="btn btn-default" id="Btn2"style="margin-top: 20px; margin-left: 20px;width:120px;background-color:purple">Buton 2</button>
+<script>
+    $("#Btn1").click(function () {
+        swal("Hello World");
+    });
+</script>
+<script>
+    $("#Btn2").click(function () {
+        Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Başarıyla Kaydedildi.",
+            showConfirmButton: false,
+            timer: 1500
+        });
+    });
+</script>
+
+

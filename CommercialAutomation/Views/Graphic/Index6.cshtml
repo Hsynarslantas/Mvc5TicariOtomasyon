@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "Index6";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<h2>Ürün Çizgi Grafiği</h2>
+<br />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Result Visualization</title>
+
+    <!-- Google Charts ve jQuery -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> <!-- Daha güncel jQuery -->
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json",
+                url: '@Url.Action("VisualizeProductResult2", "Graphic")',
+                success: function (result) {
+                    google.charts.load('current', { 'packages': ['corechart'] });
+                    google.charts.setOnLoadCallback(function () {
+                        drawChart(result);
+                    });
+                },
+                error: function (xhr, status, error) {
+                    console.error("AJAX Error:", status, error);
+                }
+            });
+        });
+
+        function drawChart(result) {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Name');
+            data.addColumn('number', 'Stok Sayısı');
+
+            var dataArray = [];
+
+            $.each(result, function (i, obj) {
+                dataArray.push([obj.Name, obj.Stok]);
+            });
+
+            data.addRows(dataArray);
+
+            var columnChartOptions = {
+                /*title: "Ürün-Stok Grafiği",*/
+                width: 1500,
+                height: 500,
+                bar: { groupWidth: "20%" },
+            };
+
+            var lineChart = new google.visualization.LineChart(document.getElementById('Linechart_div'));
+            lineChart.draw(data, columnChartOptions);
+        }
+    </script>
+</head>
+<body>
+    <div id="Linechart_div"></div>
+</body>
+</html>
+

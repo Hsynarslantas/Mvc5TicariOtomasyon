@@ -1,0 +1,30 @@
+﻿@using CommercialAutomation.Models.Classes
+@model List<Department>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<link href="~/Web/dist/css/styles.css" rel="stylesheet" />
+<table class="table table-bordered" style="margin-top:20px">
+    <tr>
+        <th>#</th>
+        <th>Departman Adı</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+        <th>Ekip Üyeleri</th>
+        
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.DepartmentId</td>
+            <td>@item.DepartmentName</td>
+            <td><a href="/Department/DeleteDepartment/@item.DepartmentId" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Department/GetDepartment/@item.DepartmentId" class="btn btn-success">Güncelle</a></td>
+            <td><a href="/Department/DepartmentDetail/@item.DepartmentId" class="btn btn-warning">Detaylar</a></td>
+            
+        </tr>
+    }
+</table>
+<a href="/Department/CreateDepartment/" class="btn btn-primary" style="width: 120px;"> Yeni Departman Ekle</a></h2>
+

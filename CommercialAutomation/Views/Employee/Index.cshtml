@@ -1,0 +1,35 @@
+﻿@using CommercialAutomation.Models.Classes
+@model List<Employee>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<table class="table table-bordered" style="margin-top:20px">
+    <tr>
+        <th>#</th>
+        <th>Çalışan Adı Soyadı</th>
+        <th>Çalışan Görseli</th>
+        <th>Departman</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+        <th>Satışlar</th>
+       
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.EmployeeId</td>
+            <td>@item.EmployeeName @item.EmployeeSurname</td>
+            <td>@item.EmployeeImageUrl</td>
+            <td>@item.Department.DepartmentName</td>
+            <td><a href="/Employee/DeleteEmployee/@item.EmployeeId" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Employee/GetEmployee/@item.EmployeeId" class="btn btn-success">Güncelle</a></td>
+            <td><a href="/Department/DepartmentPersonelSatıs/@item.EmployeeId" class="btn btn-warning">Satış Geçmişi</a></td>
+
+        </tr>
+    }
+</table>
+<a href="/Employee/CreateEmployee/" class="btn btn-primary" style="width: 120px;margin-left:20px;"> Yeni Çalışan Ekle</a></h2>
+

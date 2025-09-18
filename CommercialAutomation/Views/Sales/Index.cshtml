@@ -1,0 +1,43 @@
+﻿@using CommercialAutomation.Models.Classes
+@model List<SalesTransaction>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<table class="table table-bordered" style="margin-top:20px">
+    <tr>
+        <th>#</th>
+        <th>Ürün Adı</th>
+        <th>Cari Adı Soyadı</th>
+        <th>Çalışan Adı Soyadı</th>
+        <th>Fiyat</th>
+        <th>Adet</th>
+        <th>Toplam Fiyat</th>
+        <th>Tarih</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+        <th>Detay</th>
+
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.SalesTransactionId</td>
+            <td>@item.Product.ProductName</td>
+            <td>@item.Current.CurrentName @item.Current.CurrentSurname</td>
+            <td>@item.Employee.EmployeeName @item.Employee.EmployeeSurname</td>
+            <td>@item.Price</td>
+            <td>@item.Count</td>
+            <td>@item.TotalPrice</td>
+            <td>@item.Date.ToShortDateString()</td>
+            <td><a href="/Sales/DeleteSale/@item.SalesTransactionId" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Sales/GetSale/@item.SalesTransactionId" class="btn btn-success">Güncelle</a></td>
+            <td><a href="/Sales/SaleDetail/@item.SalesTransactionId" class="btn btn-default"style="background-color:gold">Satış Detayları</a></td>
+
+        </tr>
+    }
+</table>
+<a href="/Sales/CreateSale/" class="btn btn-primary" style="width: 120px;margin-left:20px;"> Yeni Satış Ekle</a></h2>
+
+
